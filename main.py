@@ -1,6 +1,7 @@
 import os
-from fastapi import FastAPI,Response,File
+from fastapi import FastAPI,Response
 from fastapi.responses import PlainTextResponse
+import uvicorn
 from models.data_model import DataModel
 from models.user_model import UserModel
 from rdf_functions.create_rdf import create_rdf
@@ -8,8 +9,7 @@ from rdf_functions.get_all_locations import getAllLocations
 from rdf_functions.add_new_location import addNewLocation
 from rdf_functions.delete_location import deleteLocation
 from rdf_functions.delete_all_locations import deleteAllLocations
-from rdf_functions.get_number_of_locations import getNumberOfLocations
-from os import read
+
 
 app = FastAPI()
 
@@ -55,3 +55,13 @@ async def deletelocation(data: DataModel):
 async def deletealllocations(user: UserModel):
     deleteAllLocations(user)
     return Response(status_code=201)
+    
+    
+    
+    
+    
+if __name__ == "__main__":
+    config = uvicorn.Config("main:app", port=5000, log_level="info")
+    server = uvicorn.Server(config)
+    server.run()
+
