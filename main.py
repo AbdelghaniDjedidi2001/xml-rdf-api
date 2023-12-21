@@ -13,8 +13,6 @@ from rdf_functions.delete_all_locations import deleteAllLocations
 
 app = FastAPI()
 
-app = FastAPI()
-
 origins = ["*"]
 
 app.add_middleware(
