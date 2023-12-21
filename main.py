@@ -1,5 +1,6 @@
 import os
 from fastapi import FastAPI,Response
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import PlainTextResponse
 import uvicorn
 from models.data_model import DataModel
