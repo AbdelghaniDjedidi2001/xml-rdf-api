@@ -33,7 +33,7 @@ def read_root():
 
 @app.post("/create")
 async def create(user: UserModel):
-    if(os.path.exists('./rdf_files/'+user.name+'.rdf')):
+    if(os.path.exists('./rdf_files/xml.rdf')):
         return Response(status_code=201)
     create_rdf(user)
     return Response(status_code=201)
